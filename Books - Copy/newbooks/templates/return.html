@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+	{% block title %}
+			About Us
+	{% endblock %}
+	{% block content %}
+
+		<div class="container">
+		<div class="messages">
+		{% for message in messages %}
+		{% if message.tags %} 
+		<div class="{{ message.tags }}">{% endif %}<div class="alert alert-warning">{{ message }}</div></div>
+		{% endfor %}
+	</div></div>
+		<div class="container">
+		<form action="" method="post">
+			{% csrf_token %}
+			<label for="order_no">Order No.:</label>
+					<input type="text" class='form-control' value="{{Order}}" name="order_no" readonly><br>
+			<label for="isbn">ISBN No.:</label>
+					<input type="text" class='form-control' value="{{ISBN}}" name="isbn" readonly><br>
+			<label for="rate">Rate:</label>{{forms.rate}}(Rate us 10 is the Highest and 1 is the lowest)<br><br>
+			
+			<label for="comment">Comments</label>{{forms.comment}}<br><br>
+					
+			<input type="submit" class="btn btn-success">
+		</form>
+		</div>
+	{% endblock %}

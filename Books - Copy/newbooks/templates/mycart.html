@@ -1,0 +1,411 @@
+{% extends "base.html" %}
+	{% block title %}
+		Cart | {{request.user.first_name}} {{request.user.last_name}}
+	{% endblock %}
+	
+	{% block script %}
+		$(document).ready(function(){
+		$('#itemslider').carousel({ interval: 3000 });
+		$('.carousel-showmanymoveone .item').each(function(){
+		var itemToClone = $(this);
+		for (var i=1;i<6;i++) {
+		itemToClone = itemToClone.next();
+		if (!itemToClone.length) {
+		itemToClone = $(this).siblings(':first');
+		}
+		itemToClone.children(':first-child').clone()
+		.addClass("cloneditem-"+(i))
+		.appendTo($(this));
+		}
+		});
+		});
+	{% endblock %}
+	
+	{% block style %}
+		#slider-text .col-md-6{
+		  overflow: hidden;
+		  
+		}
+		h6 {
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 400;
+		  font-size: 30px;
+		  letter-spacing: 3px;
+		  margin: 30px auto;
+		  padding-left: 40px;
+		}
+		#slider-text h2 {
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 400;
+		  font-size: 30px;
+		  letter-spacing: 3px;
+		  margin: 30px auto;
+		  padding-left: 40px;
+		}
+		#slider-text h2::after{
+		  border-top: 2px solid #c7c7c7;
+		  content: "";
+		  position: absolute;
+		  bottom: 35px;
+		  width: 100%;
+		  }
+		
+		#itemslider h4{
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 400;
+		  font-size: 12px;
+		  margin: 10px auto 3px;
+		}
+		#itemslider h5{
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: bold;
+		  font-size: 12px;
+		  margin: 3px auto 2px;
+		}
+		#itemslider h6{
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 300;;
+		  font-size: 10px;
+		  margin: 2px auto 5px;
+		}
+		.badge {
+		  background: #b20c0c;
+		  position: absolute;
+		  height: 40px;
+		  width: 40px;
+		  border-radius: 50%;
+		  line-height: 31px;
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 300;
+		  font-size: 14px;
+		  border: 2px solid #FFF;
+		  box-shadow: 0 0 0 1px #b20c0c;
+		  top: 5px;
+		  right: 25%;
+		}
+		#slider-control img{
+		  padding-top: 60%;
+		  margin: 0 auto;
+		  
+		}
+		@media screen and (max-width: 992px){
+		#slider-control img {
+		  padding-top: 70px;
+		  margin: 0 auto;
+		}
+		}
+
+		.carousel-showmanymoveone .carousel-control {
+		  width: 4%;
+		  background-image: none;
+		}
+		.carousel-showmanymoveone .carousel-control.left {
+		  margin-left: 5px;
+		}
+		.carousel-showmanymoveone .carousel-control.right {
+		  margin-right: 5px;
+		}
+		.carousel-showmanymoveone .cloneditem-1,
+		.carousel-showmanymoveone .cloneditem-2,
+		.carousel-showmanymoveone .cloneditem-3,
+		.carousel-showmanymoveone .cloneditem-4,
+		.carousel-showmanymoveone .cloneditem-5 {
+		  display: none;
+		}
+		@media all and (min-width: 768px) {
+		  .carousel-showmanymoveone .carousel-inner > .active.left,
+		  .carousel-showmanymoveone .carousel-inner > .prev {
+			left: -50%;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .active.right,
+		  .carousel-showmanymoveone .carousel-inner > .next {
+			left: 50%;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .left,
+		  .carousel-showmanymoveone .carousel-inner > .prev.right,
+		  .carousel-showmanymoveone .carousel-inner > .active {
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-1 {
+			display: block;
+		  }
+		}
+		@media all and (min-width: 768px) and (transform-3d), all and (min-width: 768px) and (-webkit-transform-3d) {
+		  .carousel-showmanymoveone .carousel-inner > .item.active.right,
+		  .carousel-showmanymoveone .carousel-inner > .item.next {
+			-webkit-transform: translate3d(50%, 0, 0);
+			transform: translate3d(50%, 0, 0);
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .item.active.left,
+		  .carousel-showmanymoveone .carousel-inner > .item.prev {
+			-webkit-transform: translate3d(-50%, 0, 0);
+			transform: translate3d(-50%, 0, 0);
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .item.left,
+		  .carousel-showmanymoveone .carousel-inner > .item.prev.right,
+		  .carousel-showmanymoveone .carousel-inner > .item.active {
+			-webkit-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			left: 0;
+		  }
+		}
+		@media all and (min-width: 992px) {
+		  .carousel-showmanymoveone .carousel-inner > .active.left,
+		  .carousel-showmanymoveone .carousel-inner > .prev {
+			left: -16.666%;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .active.right,
+		  .carousel-showmanymoveone .carousel-inner > .next {
+			left: 16.666%;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .left,
+		  .carousel-showmanymoveone .carousel-inner > .prev.right,
+		  .carousel-showmanymoveone .carousel-inner > .active {
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-2,
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-3,
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-4,
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-5,
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-6  {
+			display: block;
+		  }
+		}
+		@media all and (min-width: 992px) and (transform-3d), all and (min-width: 992px) and (-webkit-transform-3d) {
+		  .carousel-showmanymoveone .carousel-inner > .item.active.right,
+		  .carousel-showmanymoveone .carousel-inner > .item.next {
+			-webkit-transform: translate3d(16.666%, 0, 0);
+			transform: translate3d(16.666%, 0, 0);
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .item.active.left,
+		  .carousel-showmanymoveone .carousel-inner > .item.prev {
+			-webkit-transform: translate3d(-16.666%, 0, 0);
+			transform: translate3d(-16.666%, 0, 0);
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .item.left,
+		  .carousel-showmanymoveone .carousel-inner > .item.prev.right,
+		  .carousel-showmanymoveone .carousel-inner > .item.active {
+			-webkit-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			left: 0;
+		  }
+		}
+		
+		body { padding-bottom: 70px; }
+		.scrollable {
+			height: 200px;
+			overflow-y: auto;
+		}
+		.thumbnail{        
+			width: 300px; 
+			width : 100%;
+			height: 402px;
+			overflow: auto;
+		}
+
+		.thumbnail img{
+			
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+	{% endblock %}
+	
+	{% block content %}
+		<div class="container">	
+			{% if messages %}
+				<div class="messages">
+					{% for message in messages %}
+						{% if message.tags %} 
+						<div class="{{ message.tags }}">{% endif %}<div class="alert alert-warning">{{ message }}</div></div>
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
+		{% if cart %}
+			<div class="container">
+				<span class="pull-right">
+					<a href="/empty/{{request.user.first_name}}/" class="btn btn-info btn-lg">
+						<span class="glyphicon glyphicon-shopping-cart pull-right"></span>Empty Cart
+					</a>
+				</span><br>
+				<div class="row">
+					<div class="col-sm-12 col-md-10 col-md-offset-1">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Product</th>
+									<th class="text-center">Quantity</th>
+									<th class="text-center">Price</th>
+									<th class="text-center">Total</th>
+									<th> </th>
+								</tr>
+							</thead>
+
+							<tbody>
+								{% for i in cart %}
+									<tr>
+										<td class="col-sm-8 col-md-6">
+											<div class="media">
+												<a class="pull-left" href="/det/{{i.fkbook.id}}"> 
+													<img src="{{i.fkbook.pic.url}}" style="width: 80px; height: 100px;"> 
+												</a>
+												<div class="media-body">
+													<h4 class="media-heading">
+														<a href="/det/{{i.fkbook.id}}">
+														{{i.fkbook.title}}
+														</a>
+													</h4>
+													<h5 class="media-heading"> 
+														by 
+														<a href="/bauth/{{i.fkbook.author}}/">
+														{{i.fkbook.author}}
+														</a>
+													</h5>
+													{% ifnotequal i.fkbook.Category 'Ebook' %}
+														<span>On Rent: </span>
+														<span class="text-danger">
+															<strong>15 days</strong>
+														</span><br>
+													{% endifnotequal %}
+													<span>Status: </span>
+														<span class="text-success">
+															<strong>In Stock</strong>
+														</span>
+												</div>
+											</div>
+										</td>
+										<td class="col-sm-1 col-md-1" style="text-align: center">
+											<form action="/mycart/{{i.fkbook.isbn}}/" method="post">
+												{% csrf_token %}
+												{% if i.qty <= i.fkbook.stock %}
+													<input type="text" class="form-control" name ="qty" value="{{i.qty}}"><br>
+												{% else %}
+													<input type="text" class="form-control" name ="qty" value="{{i.fkbook.stock}}"><br>
+													<div class="alert alert-warning">
+														You exceed the quantity click on update if you want all the stock
+													</div>
+						
+												{% endif %}
+												<button type="submit">Update</button>
+				
+											</form>
+										</td>
+										<td class="col-sm-1 col-md-1 text-center">
+											<strong>₹{{i.fkbook.price}}</strong>
+										</td>
+						                <td class="col-sm-1 col-md-1 text-center">
+											₹{{i.price}}
+										</td>
+										<td class="col-sm-1 col-md-1">
+											<a href="/del/{{i.id}}/">
+												<i class="material-icons" style="font-size:36px;color:red">
+													delete
+												</i>
+											</a>
+										</td>
+									</tr>
+								{% endfor %}
+								<tr>
+									<td>   </td>
+									<td>   </td>
+									<td>   </td>
+									<td class="text-center"> Total:  </td>
+									<td class="text-center"><p id="demo"></p></td>
+								</tr>
+								<tr>
+									<td>   </td>
+									<td>   </td>
+									<td>   </td>
+									<td class="text-center"> Wallet:  </td>
+									<td class="text-center"><p>{{jks.wallet}}</p></td>
+								</tr>
+								<tr>
+									<td>   </td>
+									<td>   </td>
+									<td>   </td>
+									<td class="text-center"> Payment: </td>
+									<td class="text-center"><p id="wlet"></p></td>
+								</tr>
+						
+								<script>
+									text=0;
+									{% for i in cart %}
+										text =text+{{i.price}};
+									{% endfor %}
+									document.getElementById("demo").innerHTML = text;
+									document.getElementById("wlet").innerHTML = text-{{jks.wallet}};
+								</script>
+                    
+								<tr>
+									<td>   </td>
+									<td>   </td>
+									<td>   </td>
+									<td>
+										<a href="/store/" class="btn btn-default">
+											<span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+										</a></td>
+									<td>
+										<a href="/check" class="btn btn-success" role="button">
+											Checkout <span class="glyphicon glyphicon-play"></span>
+										</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		{% else %}
+			<center>
+				<h1>
+					<font face="Times New Roman">
+						Your Shopping cart is Empty
+					</font>
+				</h1>
+			</center>
+		{% endif %}
+		<div class="container">
+			<div class="row" id="slider-text">
+				<div class="col-md-6" >
+					<h2>MORE BOOKS</h2>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<div class="carousel carousel-showmanymoveone slide" id="itemslider">
+						<div class="carousel-inner">
+							<div class="item active">
+								<div class="col-xs-12 col-sm-6 col-md-2">
+									<a href="/store"><img src="/static/kks.png" class="img-responsive center-block"></a>
+									<h4 class="text-center">Go to Store</h4>
+									<h5 class="text-center"></h5>
+								</div>
+							</div>
+							{% for i in n %}
+								<div class="item">
+									<div class="col-xs-12 col-sm-6 col-md-2">
+										<a href="/det/{{i.id}}"><img src="{{i.pic.url}}" class="img-responsive center-block"></a>
+										<h4 class="text-center">{{i.title}}</h4>
+										<h5 class="text-center">₹{{i.price}}</h5>
+									</div>
+								</div>
+							{% endfor %}
+          
+						</div>
+						<div id="slider-control">
+							<a class="left carousel-control" href="#itemslider" data-slide="prev"><img src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-128.png" alt="Left" class="img-responsive"></a>
+							<a class="right carousel-control" href="#itemslider" data-slide="next"><img src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-128.png" alt="Right" class="img-responsive"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+

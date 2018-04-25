@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+	{% block title %}
+			COD Order
+	{% endblock %}
+	{% block content %}
+		<div class="container">
+			<div class="panel panel-info">
+				<div class="panel-heading">CASH ON DELIVERY ORDER</div>
+				<div class="panel-body">
+					<div  class="container">
+						Date : {% now "jS F Y" %}
+						<font face="Cambira" color="blue"><h4>
+						
+						<b>Name:</b> {{pin.name}}<br><br>
+						<b>Mobile No.</b> {{pin.mob}}<br><br>
+						<b>Address:</b> {{pin.address}}
+						{{pin.state}}
+						{{pin.pincode}}<br>
+						</h4>	
+
+						{% if pin.pincode == 110053 %}
+							<a href="/invoice" class="btn btn-success" role="button">Place Order</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+					

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+	{% block title %}
+			My Reviews
+	{% endblock %}
+	{% block content %}
+		<form action="" method="post">
+		{% for i in my %}
+		
+		<div class="container">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+				Title: {{i.title}}<span class="pull-right">{{i.date_created}}</span></div>
+					<div class="panel-body">
+					<img src="{{jks.profile.pic.url}}" class="img-round" width="90px" height="90px"/>
+					<div>
+					<b>{{jks.first_name}} {{jks.last_name}}</b>
+					</div>
+						<h4>{{i.post|linebreaks}}</h4>
+						<span class="pull-right">
+							{% ifequal i.author request.user.username %}
+						<a href="/delete/{{i.id}}/"><i class="material-icons" style="font-size:48px;color:red">delete</i></a>
+						{% endifequal %}
+						{% ifequal i.author request.user.first_name %}
+						<a href="/delete/{{i.id}}/"><i class="material-icons" style="font-size:48px;color:red">delete</i></a>
+						{% endifequal %}
+						</span><br>
+					
+					<h2>Comments</h2>
+						
+						<div class="scrollable">
+							{% for k in comm %}
+							{% ifequal i.title k.bg.title %}
+							
+							
+								
+							<div class="panel panel-success">
+								<div class="panel-heading">
+									{{k.name}}<span class="pull-right">{{k.datecreate}}</span>
+								</div>
+								<div class="panel-body panel-height">{{k.comments|linebreaks}}<span class="pull-right">
+									{% if k.name == request.user.username or i.author == request.user.username %}
+									<a href="/delcomm/{{k.id}}/"><i class="material-icons" style="font-size:48px;color:red">delete</i></a>
+									{% endif %}
+									{% if k.name == request.user.first_name or i.author == request.user.first_name %}
+									<a href="/delcomm/{{k.id}}/"><i class="material-icons" style="font-size:48px;color:red">delete</i></a>
+									{% endif %}<span><br><br>
+									
+								</div>
+								
+								</div>
+								{% endifequal %}
+							{% endfor %}
+							
+						</div>		
+							</div>	
+						
+						</div>
+				</div>
+			</div>
+		
+		
+		{% endfor %}
+		</form>
+		
+{% endblock %}

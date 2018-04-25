@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<title>Shipping Details</title>
+		<link rel="icon" href="/static/kks.png" type="image/png">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+		body { padding-bottom: 70px; }
+		.scrollable {
+		height: 200px;
+		overflow-y: auto;
+		}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse">
+			<div class="navbar-header">
+				<ul class="nav nav-pills">
+					<li role="presentation"><a href="/home">Home</a></li>
+					<li role="presentation"><a href="/aboutus">About Us</a></li>
+					<li role="presentation"><a href="/books">Books</a></li>
+					<li role="presentation"><a href="/allpost">Posts</a></li>
+					<li role="presentation"><a href="/store">Store</a></li>
+					
+				</ul>
+			</div>
+			</div>
+			
+			{% if user.is_authenticated %}
+			<ul class="nav navbar-pills navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> 
+						Welcome 
+						{% if request.user.first_name %}
+							{{request.user.first_name}}
+						{% else %}
+							{{request.user}}
+						{% endif %}
+						{% if request.user.profile.pic %}
+							<img src="{{request.user.profile.pic.url}}" class="img-circle" width="30px" height="30px"/>
+						{% endif %}
+						<span class="caret"></span></button>
+						<ul class="dropdown-menu">
+							<li><a href="/wpost">Write a new post</a></li>
+							<li><a href="/profile">Edit Profile</a></li>
+							{% ifequal request.user.username "sachin" %}
+							<li><a href="/sachin">Add a new book</a></li>
+							{% endifequal %}
+							<li><a href="/mypost/{% if request.user.first_name %}
+								{{request.user.first_name}}
+								{% else %}
+								{{request.user}}
+								{% endif %}/">My Posts</a></li>
+							<li><a href="/logout">Logout</a></li>
+						</ul>
+					</a>
+				</li>
+			</ul>       
+			</div>
+			<ul class="nav navbar-pills navbar-right">
+				<a href="/wpost" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-pencil"></span>
+				</a></li>
+			</ul>
+			{% endif %}
+		</nav>
+		<body>
+		<div class="container">
+		<div class="panel panel-info">
+					<div class="panel-heading">Terms and Conditions</div>
+						<div class="panel-body">
+							<h3>We take 75% as initial payable which is refundable as we receive the book and charge 25% for first 15 days for rental and if you want book for more time period charges will applied as follows:<br>
+a. First 15 days – 25%<br>
+b. Next 15 days – 10%<br>
+c. Next 15 days – 10%<br></h3>
+<h3> You cannot rent book for more than 45 days. If you do so, then the initial payable will not be refunded.</h3>
+
+						</div>
+					</div>
+					</div>
+					<div class="navbar navbar-inverse navbar-fixed-bottom">
+			<div class="container">
+				<p class="navbar-text pull-left">Site Built By Jaikrishna Sharma & Himanshu Kapoor(BCA-First Shift)</p>
+				<a href="https://www.facebook.com/jaikrishna.sharma.77" role="button">
+				<i class="fa fa-facebook-square" style="font-size:36px;color:#3b5998"></i></a>
+				<i class="fa fa-instagram" style="font-size:36px;color:white"></i>
+				<a href="https://www.bbtpoint.com/contact" class="navbar-btn btn-danger btn pull-right">
+					<span class="	glyphicon glyphicon-phone-alt"></span>  Contact Us
+				</a>
+			</div>
+		</div>
+		</body>
+	</html>

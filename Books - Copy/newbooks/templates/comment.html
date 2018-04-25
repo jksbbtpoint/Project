@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+	{% block title %}
+			About Us
+	{% endblock %}
+		{% block style %}
+			body { padding-bottom: 0px; }
+			.scrollable {
+			height: 200px;
+			overflow-y: auto;
+			}
+		{% endblock %}
+		{% block content %}
+		<div class="container">
+			<div class="panel panel-primary">
+				<div class="panel-heading">{{post.title}}<small><span class="pull-right">{{post.date_created|timesince}}</span></small></div>
+					<div class="panel-body">
+						{% for p in k %}
+							<h3>{% ifequal p.username post.author %}
+									<img src="{{p.profile.pic.url}}" class="img" width="150px" height="150px"/><br>
+									<b>
+										<font color="blue"><a href="/authdet/{{post.author}}/"> {{p.first_name}}</a></font>
+									</b>
+								{% endifequal %}
+							</h3>
+						{% endfor%}
+						
+						<h4>{{post.post}}</h4>
+						{% for i in comm %}
+						{% ifequal post.title i.bg.title %}
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								{% for p in k %}
+									{% ifequal p.username post.author %}
+										{{p.first_name}}
+									{% endifequal %}
+								{% endfor%}
+								<span class="pull-right">{{i.datecreate}}</span>
+							</div>
+							<div class="panel-body panel-height">
+								{{i.comments}}
+							</div>
+						</div>
+					
+						{% endifequal %}
+						{% endfor %}
+					</div>
+					<div class="panel-body panel-height">
+						<div class="panel panel-success">
+							<div class="panel-heading">Post your comment</div>	
+							<div class="panel-body panel-height">
+							<form action="" method="post">
+								{% csrf_token %}
+								{{forms.as_p}}
+								<center><button type="submit" class="btn btn-success">Send</button></center>
+							</form>
+							</div>
+						</div>
+					</div>
+						
+			</div>
+		</div>
+			
+		
+	{% endblock %}

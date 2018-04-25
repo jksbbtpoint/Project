@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<title>All Posts</title>
+		<link rel="icon" href="/static/kks.png" type="image/png">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<style>
+		.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+</style>
+</head>
+<body>
+<div class="modal-header">
+<a href="/allpost/" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+<h3 class="modal-title">
+<div class="container">{{data.first_name}} {{data.last_name}}</h3>
+<hr>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="{{data.profile.pic.url}}" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            {{data.first_name}} {{data.last_name}}</h4>
+                        <small><cite title="{{data.profile.location}}">{{data.profile.location}}<i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>{{data.email}}
+                            <br />
+                            
+							<i class="glyphicon glyphicon-briefcase"></i>{{data.profile.occupation}}</p>
+                        <!-- Split button -->
+						<a href="/authpost/{{data.username}}" class="btn btn-info" role="button">My Posts</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

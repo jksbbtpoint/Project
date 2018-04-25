@@ -1,0 +1,666 @@
+{% extends "base.html" %}
+	{% block title %}
+			Store
+	{% endblock %}
+	
+	{% block script %}
+					$(document).ready(function(){
+			$('#itemslider').carousel({ interval: 3000 });
+			$('.carousel-showmanymoveone .item').each(function(){
+			var itemToClone = $(this);
+			for (var i=1;i<6;i++) {
+			itemToClone = itemToClone.next();
+			if (!itemToClone.length) {
+			itemToClone = $(this).siblings(':first');
+			}
+			itemToClone.children(':first-child').clone()
+			.addClass("cloneditem-"+(i))
+			.appendTo($(this));
+			}
+			});
+			});
+		
+
+	
+		{% endblock %}
+		
+		{% block style%}
+		
+		.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+		
+		#slider-text .col-md-6{
+		  overflow: hidden;
+		  
+		}
+		h6 {
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 400;
+		  font-size: 30px;
+		  letter-spacing: 3px;
+		  margin: 30px auto;
+		  padding-left: 40px;
+		}
+		#slider-text h2 {
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 400;
+		  font-size: 30px;
+		  letter-spacing: 3px;
+		  margin: 30px auto;
+		  padding-left: 40px;
+		}
+		#slider-text h2::after{
+		  border-top: 2px solid #c7c7c7;
+		  content: "";
+		  position: absolute;
+		  bottom: 35px;
+		  width: 100%;
+		  }
+		
+		#itemslider h4{
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 400;
+		  font-size: 12px;
+		  margin: 10px auto 3px;
+		}
+		#itemslider h5{
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: bold;
+		  font-size: 12px;
+		  margin: 3px auto 2px;
+		}
+		#itemslider h6{
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 300;;
+		  font-size: 10px;
+		  margin: 2px auto 5px;
+		}
+		
+		#slider-control img{
+		  padding-top: 60%;
+		  margin: 0 auto;
+		  
+		}
+		@media screen and (max-width: 992px){
+		#slider-control img {
+		  padding-top: 70px;
+		  margin: 0 auto;
+		}
+		}
+
+		.carousel-showmanymoveone .carousel-control {
+		  width: 4%;
+		  background-image: none;
+		}
+		.carousel-showmanymoveone .carousel-control.left {
+		  margin-left: 5px;
+		}
+		.carousel-showmanymoveone .carousel-control.right {
+		  margin-right: 5px;
+		}
+		.carousel-showmanymoveone .cloneditem-1,
+		.carousel-showmanymoveone .cloneditem-2,
+		.carousel-showmanymoveone .cloneditem-3,
+		.carousel-showmanymoveone .cloneditem-4,
+		.carousel-showmanymoveone .cloneditem-5 {
+		  display: none;
+		}
+		@media all and (min-width: 768px) {
+		  .carousel-showmanymoveone .carousel-inner > .active.left,
+		  .carousel-showmanymoveone .carousel-inner > .prev {
+			left: -50%;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .active.right,
+		  .carousel-showmanymoveone .carousel-inner > .next {
+			left: 50%;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .left,
+		  .carousel-showmanymoveone .carousel-inner > .prev.right,
+		  .carousel-showmanymoveone .carousel-inner > .active {
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-1 {
+			display: block;
+		  }
+		}
+		@media all and (min-width: 768px) and (transform-3d), all and (min-width: 768px) and (-webkit-transform-3d) {
+		  .carousel-showmanymoveone .carousel-inner > .item.active.right,
+		  .carousel-showmanymoveone .carousel-inner > .item.next {
+			-webkit-transform: translate3d(50%, 0, 0);
+			transform: translate3d(50%, 0, 0);
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .item.active.left,
+		  .carousel-showmanymoveone .carousel-inner > .item.prev {
+			-webkit-transform: translate3d(-50%, 0, 0);
+			transform: translate3d(-50%, 0, 0);
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .item.left,
+		  .carousel-showmanymoveone .carousel-inner > .item.prev.right,
+		  .carousel-showmanymoveone .carousel-inner > .item.active {
+			-webkit-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			left: 0;
+		  }
+		}
+		@media all and (min-width: 992px) {
+		  .carousel-showmanymoveone .carousel-inner > .active.left,
+		  .carousel-showmanymoveone .carousel-inner > .prev {
+			left: -16.666%;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .active.right,
+		  .carousel-showmanymoveone .carousel-inner > .next {
+			left: 16.666%;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .left,
+		  .carousel-showmanymoveone .carousel-inner > .prev.right,
+		  .carousel-showmanymoveone .carousel-inner > .active {
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-2,
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-3,
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-4,
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-5,
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-6  {
+			display: block;
+		  }
+		}
+		@media all and (min-width: 992px) and (transform-3d), all and (min-width: 992px) and (-webkit-transform-3d) {
+		  .carousel-showmanymoveone .carousel-inner > .item.active.right,
+		  .carousel-showmanymoveone .carousel-inner > .item.next {
+			-webkit-transform: translate3d(16.666%, 0, 0);
+			transform: translate3d(16.666%, 0, 0);
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .item.active.left,
+		  .carousel-showmanymoveone .carousel-inner > .item.prev {
+			-webkit-transform: translate3d(-16.666%, 0, 0);
+			transform: translate3d(-16.666%, 0, 0);
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .item.left,
+		  .carousel-showmanymoveone .carousel-inner > .item.prev.right,
+		  .carousel-showmanymoveone .carousel-inner > .item.active {
+			-webkit-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			left: 0;
+		  }
+		}
+	
+		
+		
+		#searchid {
+    position: relative;
+    width: 39%;
+}
+
+			
+table, th, td {
+    
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;    
+}
+	
+			div.gallery {
+				margin: 2px;
+				border: 1px solid #ccc;
+				float: left;
+				width: 50px;
+			}
+
+			div.gallery:hover {
+				border: 1px solid #777;
+			}
+
+			div.gallery img {
+				width: 50%;
+				height: auto;
+			}
+
+			div.desc {
+				padding: 10px;
+				text-align: center;
+			}
+			body {
+				padding-bottom: 0px;
+			}
+			.thumbnail{        
+    width: 300px; 
+    width : 100%;
+    height: 499px;
+    overflow: auto;
+}
+
+.thumbnail img{
+    
+    width: 50%;
+    height: auto;
+    display: block;
+}
+
+
+.preview {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  @media screen and (max-width: 996px) {
+    .preview {
+      margin-bottom: 20px; } }
+
+.preview-pic {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
+
+.preview-thumbnail.nav-tabs {
+  border: none;
+  margin-top: 15px; }
+  .preview-thumbnail.nav-tabs li {
+    width: 18%;
+    margin-right: 2.5%; }
+    .preview-thumbnail.nav-tabs li img {
+      max-width: 100%;
+      display: block; }
+    .preview-thumbnail.nav-tabs li a {
+      padding: 0;
+      margin: 0; }
+    .preview-thumbnail.nav-tabs li:last-of-type {
+      margin-right: 0; }
+
+.tab-content {
+  overflow: hidden; }
+  .tab-content img {
+    width: 70%;
+	height:50%;
+    -webkit-animation-name: opacity;
+            animation-name: opacity;
+    -webkit-animation-duration: .3s;
+            animation-duration: .3s; }
+
+.card {
+  margin-top: 50px;
+  background: #eee;
+  padding: 3em;
+  line-height: 1.5em; }
+
+@media screen and (min-width: 997px) {
+  .wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; } }
+
+.details {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.colors {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
+
+.product-title, .price, .sizes, .colors {
+  text-transform: UPPERCASE;
+  font-weight: bold; }
+
+.checked, .price span {
+  color: #ff9f1a; }
+
+.product-title, .rating, .product-description, .price, .vote, .sizes {
+  margin-bottom: 15px; }
+
+.product-title {
+  margin-top: 0; }
+
+.size {
+  margin-right: 10px; }
+  .size:first-of-type {
+    margin-left: 40px; }
+
+.color {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  height: 2em;
+  width: 2em;
+  border-radius: 2px; }
+  .color:first-of-type {
+    margin-left: 20px; }
+
+.add-to-cart, .like {
+  background: #ff9f1a;
+  padding: 1.2em 1.5em;
+  border: none;
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: background .3s ease;
+          transition: background .3s ease; }
+  .add-to-cart:hover, .like:hover {
+    background: #b36800;
+    color: #fff; }
+
+.not-available {
+  text-align: center;
+  line-height: 2em; }
+  .not-available:before {
+    font-family: fontawesome;
+    content: "\f00d";
+    color: #fff; }
+
+.orange {
+  background: #ff9f1a; }
+
+.green {
+  background: #85ad00; }
+
+.blue {
+  background: #0076ad; }
+
+.tooltip-inner {
+  padding: 1.3em; }
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(3);
+            transform: scale(3); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(3);
+            transform: scale(3); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+/*# sourceMappingURL=style.css.map */
+
+ .product_view .modal-dialog{max-width: 800px; width: 100%;}
+        .pre-cost{text-decoration: line-through; color: #a5a5a5;}
+        .space-ten{padding: 10px 0;}
+		
+		
+.login {
+margin-bottom:5px;
+}
+
+#dd {
+    width: 300px !important;
+}
+
+		{% endblock %}
+	{% block content %}
+
+	<body onload="myFunction()">
+	
+	
+	<div class="container">
+		<span class="pull-right">
+		{% if request.user %}
+			<a href="/mycart/" class="btn btn-info btn-lg">
+				<span class="glyphicon glyphicon-shopping-cart pull-right"></span>
+				<span class="badge">{{countcart}}</span>
+			</a>
+		</span><br>
+		{% endif %}
+	</div>
+	<div class="container">
+		{% if details %}
+		<form action="" method="post">
+			{% csrf_token %}
+			<div class="card">
+				<div class="container-fliud">
+					<div class="wrapper row">
+						<div class="preview col-md-6">
+							<div class="preview-pic tab-content">
+								<div class="tab-pane active" id="pic-1"><a href="{{details.pic.url}}" data-position-to="window"><img src="{{details.pic.url}}" width="200px" height="150px" /></a></div>
+								{% if pre %}
+									<div class="tab-pane" id="pic-2"><a href="{{pre.pic1.url}}" data-position-to="window"><img src="{{pre.pic1.url}}" /></a></div>
+								{% else %}
+									<div class="tab-pane" id="pic-2"><a href="{{details.pic.url}}" data-position-to="window"><img src="{{details.pic.url}}" /></a></div>
+								{% endif %}
+								{% if pre %}
+									<div class="tab-pane" id="pic-3"><a href="{{pre.pic2.url}}" data-position-to="window"><img src="{{pre.pic2.url}}" /></a></div>
+								{% else %}
+									<div class="tab-pane" id="pic-3"><a href="{{details.pic.url}}" data-position-to="window"><img src="{{details.pic.url}}" /></a></div>
+								{% endif %}
+							</div>
+							<ul class="preview-thumbnail nav nav-tabs">
+								<li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{details.pic.url}}" /></a></li>
+								{% if pre %}
+									<li><a data-target="#pic-2" data-toggle="tab"><img src="{{pre.pic1.url}}" /></a></li>
+									<li><a data-target="#pic-3" data-toggle="tab"><img src="{{pre.pic2.url}}" /></a></li>
+								{% else %}
+									<li><a data-target="#pic-2" data-toggle="tab"><img src="{{details.pic.url}}" /></a></li>
+									<li><a data-target="#pic-3" data-toggle="tab"><img src="{{details.pic.url}}" /></a></li>
+								{% endif %}
+							</ul>
+						
+						</div>
+						<div class="container">
+							<h3 class="product-title">{{details.title}}</h3>
+							<p class="product-description">{{details.desc|linebreaks}}</p><br>
+							<h4 class="price">Language: <span>{{details.lang}}</span></h4>
+							<h4 class="price">price: <span>₹{{details.price}}</span></h4>
+							{% ifnotequal details.Category 'Ebook' %}
+								<h5 class="sizes">On Rent:
+									<span class="size">15 days (25% of price)</span>
+									<span class="size" >30 days (35% of price)</span>
+									<span class="size">45 days (45% of price)</span>
+								</h5>
+							{% endifnotequal %}
+							<div class="action">
+								{{forms.as_p}}
+								{% if messages %}
+									<div class="messages">
+									{% for message in messages %}
+										{% if message.tags %} 
+											<div class="{{ message.tags }}">{% endif %}<div class="alert alert-warning">{{ message }}</div></div>
+										{% endfor %}
+									</div>
+								{% endif %}
+								<button class="add-to-cart btn btn-default" type="submit">add to cart</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+  
+			
+	</form>	
+		<div class="container">
+			<div class="row" id="slider-text">
+				<div class="col-md-6" >
+			<h2>MORE BOOKS</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Item slider-->
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="carousel carousel-showmanymoveone slide" id="itemslider">
+        <div class="carousel-inner">
+			
+          <div class="item active">
+			
+            <div class="col-xs-12 col-sm-6 col-md-2">
+              <a href="/store"><img src="/static/kks.png" class="img-responsive center-block"></a>
+              <h4 class="text-center">Go to Store</h4>
+              <h5 class="text-center"></h5>
+            </div>
+          </div>
+		{% for i in n %}
+          <div class="item">
+            <div class="col-xs-12 col-sm-6 col-md-2">
+              <a href="/det/{{i.id}}"><img src="{{i.pic.url}}" class="img-responsive center-block"></a>
+              <h4 class="text-center">{{i.title}}</h4>
+              <h5 class="text-center">₹{{i.price}}</h5>
+            </div>
+          </div>
+		{% endfor %}
+          
+        </div>
+
+        <div id="slider-control">
+        <a class="left carousel-control" href="#itemslider" data-slide="prev"><img src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-128.png" alt="Left" class="img-responsive"></a>
+        <a class="right carousel-control" href="#itemslider" data-slide="next"><img src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-128.png" alt="Right" class="img-responsive"></a>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+	{% endif %}
+	<br>
+	
+	<div class="container">
+		<div class="panel panel-success">
+			<div class="panel-heading">Categories</div>	
+			<div class="panel-body panel-height">
+			<table width='100%'>
+			<tr><center>
+				<td><a href="/store">All</a><br></td>
+				<td><a href="/catstore/Network Marketing">Network Marketing</a><br></td>
+				<td><a href="/catstore/Self Help">Self-Help</a><br></td>
+				<td><a href="/catstore/Academics">Academics</a><br></td>
+				<td><a href="/catstore/Leadership">Leadership</a><br></td>
+				<td><a href="/catstore/Ebook">E-Book</a></td>
+				<td><a href="/catstore/Accounts">Accounts</a></td>
+				</center>
+			</tr>
+			</table>
+			</div>
+		</div>
+	</div>
+	{% if record %}
+		<div class="container" id="searchid">
+			<center>
+				<form action="/search_query/" method="post">
+					{% csrf_token %}
+					<div class="input-group ">
+						<input type="text" placeholder="Search by Title | Author | Language | Category" class="form-control" name="search_box" id="search_box" />
+						<span class="input-group-btn">
+						<button type="submit" class="btn btn-info go inline"><span class="glyphicon glyphicon-search"></span>Search</button>
+						</span>
+					</div>
+		</div>
+		
+		{% if messages %}
+			<div class="messages">
+				{% for message in messages %}
+					{% if message.tags %} 
+						<div class="{{ message.tags }}">
+					{% endif %}
+					<div class="alert alert-warning">
+						{{ message }}
+					</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+	{% else %}
+	<center>
+				<h1>
+					<font face="Times New Roman">
+						No record found.
+					</font>
+				</h1>
+			</center>
+	{% endif %}
+	
+
+	<div class = "container">
+		<div class="row">
+		
+		{% for i in record %}
+			{% if i.stock != 0 %}
+		
+			<center>
+			<div class="col-md-3"><br><br>
+				<div class="thumbnail">
+				{% if i.pic %}
+				<a href="{{i.pic.url}}" data-position-to="window">
+				<img src="{{i.pic.url}}" width="150px" height="200px"/><br><br>
+				</a>
+				{% endif %}
+				<a href='/det/{{i.id}}/'>ISBN:<b>{{i.isbn}}</b></a><br>
+				Title:<b>{{i.title}}</b><br>
+				Author:<a href="/bauth/{{i.author}}/"><b>{{i.author}}</b></a><br>
+				Language:<b>{{i.lang}}</b><br>
+				{% if i.stock > 0 %}
+				<span>Status: </span><span class="text-success"><strong>In Stock</strong></span><br><br>
+				{% else %}
+				<span>Status: </span><span class="text-danger"><strong>Out of Stock</strong></span><br><br>
+				{% endif %}
+				
+				<a href="/cart/{{i.isbn}}/" class="btn btn-success" role="button">Add to Cart</a>
+				<a href="/qv/{{i.isbn}}/" class="btn btn-primary" data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i> Quick View</a>
+				
+			</div>
+			</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+	<div class="modal fade product_view" id="product_view">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				{% include 'modal.html' %}
+			</div>
+		</div>
+	</div>
+
+
+
+	{% endblock %}

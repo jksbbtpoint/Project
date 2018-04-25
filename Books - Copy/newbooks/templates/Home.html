@@ -1,0 +1,644 @@
+<html>
+	<head>
+		<title>Home</title>
+		<link rel="icon" href="/static/kks.png" type="image/png">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" rel="stylesheet">
+		
+		<script>
+					$(document).ready(function(){
+			$('#itemslider').carousel({ interval: 3000 });
+			$('.carousel-showmanymoveone .item').each(function(){
+			var itemToClone = $(this);
+			for (var i=1;i<6;i++) {
+			itemToClone = itemToClone.next();
+			if (!itemToClone.length) {
+			itemToClone = $(this).siblings(':first');
+			}
+			itemToClone.children(':first-child').clone()
+			.addClass("cloneditem-"+(i))
+			.appendTo($(this));
+			}
+			});
+			});
+
+		</script>
+		
+		<style>
+		
+		
+		
+				#slider-text{
+		  padding-top: 40px;
+		  display: block;
+		}
+		#slider-text .col-md-6{
+		  overflow: hidden;
+		  
+		}
+		h6 {
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 400;
+		  font-size: 30px;
+		  letter-spacing: 3px;
+		  margin: 30px auto;
+		  padding-left: 40px;
+		}
+		#slider-text h2 {
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 400;
+		  font-size: 30px;
+		  letter-spacing: 3px;
+		  margin: 30px auto;
+		  padding-left: 40px;
+		}
+		#slider-text h2::after{
+		  border-top: 2px solid #c7c7c7;
+		  content: "";
+		  position: absolute;
+		  bottom: 35px;
+		  width: 100%;
+		  }
+		#iemslider h4{
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 400;
+		  font-size: 12px;
+		  margin: 10px auto 3px;
+		}
+		#iemslider h5{
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: bold;
+		  font-size: 12px;
+		  margin: 3px auto 2px;
+		}
+		#iemslider h6{
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 300;;
+		  font-size: 10px;
+		  margin: 2px auto 5px;
+		}
+		#itemslider h4{
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 400;
+		  font-size: 12px;
+		  margin: 10px auto 3px;
+		}
+		#itemslider h5{
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: bold;
+		  font-size: 12px;
+		  margin: 3px auto 2px;
+		}
+		#itemslider h6{
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 300;;
+		  font-size: 10px;
+		  margin: 2px auto 5px;
+		}
+		.badge {
+		  background: #b20c0c;
+		  position: absolute;
+		  height: 40px;
+		  width: 40px;
+		  border-radius: 50%;
+		  line-height: 31px;
+		  font-family: "Times New Roman", Times, serif;
+		  font-weight: 300;
+		  font-size: 14px;
+		  border: 2px solid #FFF;
+		  box-shadow: 0 0 0 1px #b20c0c;
+		  top: 5px;
+		  right: 25%;
+		}
+		#slider-control img{
+		  padding-top: 60%;
+		  margin: 0 auto;
+		  
+		}
+		@media screen and (max-width: 992px){
+		#slider-control img {
+		  padding-top: 70px;
+		  margin: 0 auto;
+		}
+		}
+
+		.carousel-showmanymoveone .carousel-control {
+		  width: 4%;
+		  background-image: none;
+		}
+		.carousel-showmanymoveone .carousel-control.left {
+		  margin-left: 5px;
+		}
+		.carousel-showmanymoveone .carousel-control.right {
+		  margin-right: 5px;
+		}
+		.carousel-showmanymoveone .cloneditem-1,
+		.carousel-showmanymoveone .cloneditem-2,
+		.carousel-showmanymoveone .cloneditem-3,
+		.carousel-showmanymoveone .cloneditem-4,
+		.carousel-showmanymoveone .cloneditem-5 {
+		  display: none;
+		}
+		@media all and (min-width: 768px) {
+		  .carousel-showmanymoveone .carousel-inner > .active.left,
+		  .carousel-showmanymoveone .carousel-inner > .prev {
+			left: -50%;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .active.right,
+		  .carousel-showmanymoveone .carousel-inner > .next {
+			left: 50%;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .left,
+		  .carousel-showmanymoveone .carousel-inner > .prev.right,
+		  .carousel-showmanymoveone .carousel-inner > .active {
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-1 {
+			display: block;
+		  }
+		}
+		@media all and (min-width: 768px) and (transform-3d), all and (min-width: 768px) and (-webkit-transform-3d) {
+		  .carousel-showmanymoveone .carousel-inner > .item.active.right,
+		  .carousel-showmanymoveone .carousel-inner > .item.next {
+			-webkit-transform: translate3d(50%, 0, 0);
+			transform: translate3d(50%, 0, 0);
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .item.active.left,
+		  .carousel-showmanymoveone .carousel-inner > .item.prev {
+			-webkit-transform: translate3d(-50%, 0, 0);
+			transform: translate3d(-50%, 0, 0);
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .item.left,
+		  .carousel-showmanymoveone .carousel-inner > .item.prev.right,
+		  .carousel-showmanymoveone .carousel-inner > .item.active {
+			-webkit-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			left: 0;
+		  }
+		}
+		@media all and (min-width: 992px) {
+		  .carousel-showmanymoveone .carousel-inner > .active.left,
+		  .carousel-showmanymoveone .carousel-inner > .prev {
+			left: -16.666%;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .active.right,
+		  .carousel-showmanymoveone .carousel-inner > .next {
+			left: 16.666%;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .left,
+		  .carousel-showmanymoveone .carousel-inner > .prev.right,
+		  .carousel-showmanymoveone .carousel-inner > .active {
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-2,
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-3,
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-4,
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-5,
+		  .carousel-showmanymoveone .carousel-inner .cloneditem-6  {
+			display: block;
+		  }
+		}
+		@media all and (min-width: 992px) and (transform-3d), all and (min-width: 992px) and (-webkit-transform-3d) {
+		  .carousel-showmanymoveone .carousel-inner > .item.active.right,
+		  .carousel-showmanymoveone .carousel-inner > .item.next {
+			-webkit-transform: translate3d(16.666%, 0, 0);
+			transform: translate3d(16.666%, 0, 0);
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .item.active.left,
+		  .carousel-showmanymoveone .carousel-inner > .item.prev {
+			-webkit-transform: translate3d(-16.666%, 0, 0);
+			transform: translate3d(-16.666%, 0, 0);
+			left: 0;
+		  }
+		  .carousel-showmanymoveone .carousel-inner > .item.left,
+		  .carousel-showmanymoveone .carousel-inner > .item.prev.right,
+		  .carousel-showmanymoveone .carousel-inner > .item.active {
+			-webkit-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			left: 0;
+		  }
+		}
+
+.thumbnail{        
+    width: 300px; 
+    width : 100%;
+    height: 402px;
+    overflow: auto;
+}
+
+.thumbnail img{
+    
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.hover_drop_down.input-group-btn ul.dropdown-menu{margin-top: 20px;}/*To avoid unwanted close*/
+.hover_drop_down.btn-group ul.dropdown-menu{margin-top:44px;}/*To avoid unwanted close*/
+.hover_drop_down:hover ul.dropdown-menu{
+   display: block;
+}
+
+.login {
+margin-bottom:5px;
+}
+
+#dd {
+    width: 300px !important;
+}
+
+
+		.social {
+    margin: 0;
+    padding: 0;
+}
+
+.social ul {
+    margin: 0;
+    padding: 5px;
+}
+
+.social ul li {
+    margin: 5px;
+    list-style: none outside none;
+    display: inline-block;
+}
+
+.social i {
+    width: 80px;
+    height: 80px;
+    color: #FFF;
+    background-color: #909AA0;
+    font-size: 45px;
+    text-align:center;
+    padding-top: 22px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -ms-transition: all ease 0.3s;
+}
+
+.social i:hover {
+    color: #FFF;
+    text-decoration: none;
+    transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -ms-transition: all ease 0.3s;
+}
+.social .fa-google-plus:hover {
+    background: #e64522;
+}
+
+.social .fa-facebook:hover {
+    background: #4060A5;
+}
+
+.social .fa-instagram:hover {
+    background: #00ABE3;
+}
+.social .fa-youtube:hover {
+    background: #FF1F25;
+}
+
+
+#footer {
+    border-top: 5px solid #CDB380;
+    background: #033649 none repeat scroll 0% 0%;
+    padding-top: 30px;
+    margin-top: 60px;
+    clear: both;
+    color: #999;
+    display: block;
+}
+
+#footer .widgettitle {
+    margin: 0px;
+    padding: 0px 0px 15px;
+    border-bottom: medium none;
+}
+#footer h4 {
+    color: #FFF;
+}
+
+#footer ul {
+    list-style: outside none none;
+}
+
+#footer li {
+    padding: 7px 0px;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+    margin: 0px;
+}
+
+#footer li a {
+    color: #DDD;
+}
+
+#sub-floor {
+    color: #AAA;
+    background: black none repeat scroll 0% 0%;
+    padding: 10px 0px;
+}
+
+
+
+
+
+
+
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+			<div class="navbar-header">
+				<ul class="nav nav-pills" role="tablist">
+					<li role="presentation" class="active"><a href="/home">Home</a></li>
+					<li role="presentation"><a href="/aboutus">About Us</a></li>
+					<li role="presentation"><a href="/books">Books</a></li>
+					<li role="presentation"><a href="/allpost">Reviews</a></li>
+					<li role="presentation"><a href="/store">Store</a></li>
+					
+				</ul>
+			</div>
+			
+			{% if user.is_authenticated %}
+			<ul class="nav navbar-pills navbar-right">
+				<li class="btn-group hover_drop_down">
+					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown"><span class="glyphicon glyphicon-user"></span> 
+						Welcome 
+						{% if request.user.first_name %}
+							{{request.user.first_name}}
+						{% else %}
+							{{request.user}}
+						{% endif %}
+						{% if request.user.profile.pic %}
+							<img src="{{request.user.profile.pic.url}}" class="img-circle" width="30px" height="30px"/>
+						{% endif %}
+						<span class="caret"></span></button>
+						<ul class="dropdown-menu">
+							<li><a href="/orders">Your Orders</a></li>
+							<li><a href="/wpost">Write a review</a></li>
+							<li><a href="/profile">Edit Profile</a></li>
+							{% ifequal request.user.username "sachin" %}
+							<li><a href="/sachin">Add a new book</a></li>
+							{% endifequal %}
+							<li><a href="/mypost/">My Reviews</a></li>
+							<li><a href="/logout">Logout</a></li>
+						</ul>
+					</a>
+					
+				</li>
+			</ul>       
+			
+			<ul class="nav navbar-pills navbar-right">
+				<a href="/wpost" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-pencil"></span>
+				</a>
+			</ul>
+			{% else %}
+			<ul class="nav navbar-pills navbar-right">
+				<li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			</ul>
+			<ul class="nav navbar-pills navbar-right">
+			
+				<li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+				<div class="dropdown-menu" id="dd" style="padding: 15px; padding-bottom: 10px;">
+				<div class="panel panel-success">
+					<div class="panel-heading"><h3>Login to Your Account</h3></div>
+						<div class="panel-body">
+				
+				
+				<form action="{% url 'check' %}" method="post">
+					{% csrf_token %}
+					
+					<label for="username">Username:</label>
+					<input type="text" class='form-control' placeholder="Enter username" name="username"><br>
+					<label for="password">Password:</label>
+					<input type="password" class='form-control' placeholder="Enter password" name="password">
+					<br>
+					
+					<input type="submit" name="login-submit" class="btn btn-success" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+				</form><a href="/forgot">Forgot Password</a>
+							
+							</div>
+							<div class="panel-footer">
+                    Not Registred? <a href="/register">Register here</a></div>
+							</div>
+				</div>
+			</li>
+			
+			</ul>
+			{% endif %}
+			</div>
+		</nav>
+		
+
+   
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="/static/logo1.gif" alt="Los Angeles" style="width:100%;height:75%;">
+      </div>
+
+      <div class="item">
+        <img src="/static/price.jpg" alt="Chicago" style="width:100%;height:75%;">
+      </div>
+    
+      <div class="item">
+        <img src="/static/logo2.jpg" alt="New york" style="width:100%;height:75%;">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="container">
+		<p align ="center"><b><font size="24" color='blue'><H6> ABOUT US</H6> </font></b></p><br>
+		 <p style="font-size:33px">Book store is started with a vision to provide affordable reading. We provide titles like Network-Marketing, Self-Help, e-Books, Biographies etc.
+		Our reading platform leverages tech to get people hooked on to a very productive habit i.e. reading.</p><br>
+		 <p style="font-size:33px">We believe that all our reading needs are mostly time-bound and renting reading resources is a cost-efficient & greener alternative. <br>Why buy, if you can just read & return ?</p>
+		</div>
+<div class="container">
+  <div class="row" id="slider-text">
+    <div class="col-md-6" >
+      <h2>Available on rent</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Item slider-->
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="carousel carousel-showmanymoveone slide" id="itemslider">
+        <div class="carousel-inner">
+			
+          <div class="item active">
+			
+            <div class="col-xs-12 col-sm-6 col-md-2">
+              <a href="/store"><img src="/static/kks.png" class="img-responsive center-block"></a>
+              <h4 class="text-center">Go to Store</h4>
+              <h5 class="text-center"></h5>
+            </div>
+          </div>
+		{% for i in b %}
+          <div class="item">
+            <div class="col-xs-12 col-sm-6 col-md-2">
+              <a href="/det/{{i.id}}"><img src="{{i.pic.url}}" class="img-responsive center-block"></a>
+              <h4 class="text-center">{{i.title}}</h4>
+              <h5 class="text-center">₹{{i.price}}</h5>
+            </div>
+          </div>
+		{% endfor %}
+          
+        </div>
+
+        <div id="slider-control">
+        <a class="left carousel-control" href="#itemslider" data-slide="prev"><img src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-128.png" alt="Left" class="img-responsive"></a>
+        <a class="right carousel-control" href="#itemslider" data-slide="next"><img src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-128.png" alt="Right" class="img-responsive"></a>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+
+
+
+
+
+
+
+
+</div>
+<div class="container">
+  <div class="row" id="slider-text">
+    <div class="col-md-6" >
+      <h2>E BOOKS</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Item slider-->
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="carousel carousel-showmanymoveone slide" id="iemslider">
+        <div class="carousel-inner">
+			
+          <div class="item active">
+			
+            <div class="col-xs-12 col-sm-6 col-md-2">
+              <a href="/store"><img src="/static/kks.png" class="img-responsive center-block"></a>
+              <h4 class="text-center">Go to Store</h4>
+              <h5 class="text-center"></h5>
+            </div>
+          </div>
+		{% for i in a %}
+          <div class="item">
+            <div class="col-xs-12 col-sm-6 col-md-2">
+              <a href="/det/{{i.id}}"><img src="{{i.pic.url}}" class="img-responsive center-block"></a>
+              <h4 class="text-center">{{i.title}}</h4>
+              <h5 class="text-center">₹{{i.price}}</h5>
+            </div>
+          </div>
+		{% endfor %}
+          
+        </div>
+
+        <div id="slider-control">
+        <a class="left carousel-control" href="#iemslider" data-slide="prev"><img src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-128.png" alt="Left" class="img-responsive"></a>
+        <a class="right carousel-control" href="#iemslider" data-slide="next"><img src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-128.png" alt="Right" class="img-responsive"></a>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<footer id="footer" class="clearfix">
+      <div id="footer-widgets">
+
+        <div class="container">
+
+        <div id="footer-wrapper">
+
+          <div class="row">
+            <div class="col-sm-6 col-md-2">
+              <div id="meta-3" class="widget widgetFooter widget_meta">
+              <h4 class="widgettitle">Pages :</h4>
+              <ul>
+    		  <li><a href="/home"><i class="fa fa-home fa-fw"></i> Home</a></li>
+			  <li><a href="/static/T&c.pdf"><span class="glyphicon glyphicon-file"></span> T&C </a></li>
+			  <li><a href="https://www.bbtpoint.com/"><i class="fa fa-envelope fa-fw"></i> Contact Us</a></li>
+             </ul>
+</div>      </div> <!-- end widget1 -->
+
+            <div class="col-sm-6 col-md-2">
+            </div> <!-- end widget1 -->
+			<span class="pull-right">
+            <div class="col-sm-6 col-md-12">
+              <div id="meta-4" class="widget widgetFooter widget_meta">
+			  <h4 class="widgettitle">Our social media :</h4>
+                   		<div class="social">
+            <ul>
+                <li><a href="https://www.facebook.com/JSHKBooks/"><i class="fa fa-lg fa-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/jaikrishan_sharma/"><i class="fa fa-lg fa-instagram"></i></a></li>
+                <li><a href="https://www.youtube.com/channel/UCVcS7SMquu3xX3W7kSYRmRg"><i class="fa fa-lg fa-youtube"></i></a></li>
+			</ul>
+		</div> </div></span> <!-- end widget1 -->
+
+          </div> <!-- end .row -->
+
+        </div> <!-- end #footer-wrapper -->
+
+        </div> <!-- end .container -->
+      </div> <!-- end #footer-widgets -->
+
+      <div id="sub-floor">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 copyright">
+             Copyright © 2017
+            </div>
+            <div class="col-md-4 col-md-offset-4 attribution">
+             Developed by  <a target="_blank" href="https://www.facebook.com/jaikrishna.sharma.77">Jaikrishna</a><a target="_blank" href="https://www.facebook.com/himanshu.kapoor.980"> & Himanshu</a> .
+            </div>
+          </div> <!-- end .row -->
+        </div>
+      </div>
+
+    </footer>
+		
+
+	</body>
+</html>

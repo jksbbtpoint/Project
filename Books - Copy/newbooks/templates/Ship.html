@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+	{% block title %}
+		Shipping Details
+	{% endblock %}
+	
+	{% block style %}
+		.jks {
+		width: 320px;
+		padding: 10px;
+		border: 5px solid gray;
+		margin: 0;
+		}
+	{% endblock %}
+
+	{% block content %}
+		<div class="container">
+			<div class="panel panel-info">
+				<div class="panel-heading">Shipping Details OR Add New Address</div>
+				<div class="panel-body">
+					{% for n in item %}
+						<div class="jks">
+							<b>Name:</b> {{n.name}}<br>
+							<b>Mobile No.</b> {{n.mob}}<br>
+							<b>Address:</b> {{n.address}}
+							{{n.state}}
+							{{n.pincode}}<br>
+							<a href="/T&C/{{n.id}}" class="btn btn-success" role="button">Deliver to this address</a>
+							<a href="/deleteadd/{{n.id}}" class="btn btn-info" role="button">Delete</a>
+						</div><br>
+					{% endfor %}
+					<form action="" method="post">
+						{% csrf_token %}
+						{{forms.as_p}}
+						<button type="submit" class="btn btn-success">Submit Address</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	{% endblock %}

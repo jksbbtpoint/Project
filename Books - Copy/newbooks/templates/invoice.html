@@ -1,0 +1,218 @@
+<html>
+<head>
+    <meta charset="utf-8">
+	<link rel="icon" href="/static/kks.png" type="image/png">
+    <title>Invoice</title>
+    
+    <style>
+    .invoice-box{
+        max-width:800px;
+        margin:auto;
+        padding:30px;
+        border:1px solid #eee;
+        box-shadow:0 0 10px rgba(0, 0, 0, .15);
+        font-size:16px;
+        line-height:24px;
+        font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color:#555;
+    }
+    
+    .invoice-box table{
+        width:100%;
+        line-height:inherit;
+        text-align:left;
+    }
+    
+    .invoice-box table td{
+        padding:5px;
+        vertical-align:top;
+    }
+    
+    .invoice-box table tr td:nth-child(2){
+        text-align:right;
+    }
+    
+    .invoice-box table tr.top table td{
+        padding-bottom:20px;
+    }
+    
+    .invoice-box table tr.top table td.title{
+        font-size:45px;
+        line-height:45px;
+        color:#333;
+    }
+    
+    .invoice-box table tr.information table td{
+        padding-bottom:40px;
+    }
+    
+    .invoice-box table tr.heading td{
+        background:#eee;
+        border-bottom:1px solid #ddd;
+        font-weight:bold;
+    }
+    
+    .invoice-box table tr.details td{
+        padding-bottom:20px;
+    }
+    
+    .invoice-box table tr.item td{
+        border-bottom:1px solid #eee;
+    }
+    
+    .invoice-box table tr.item.last td{
+        border-bottom:none;
+    }
+    
+    .invoice-box table tr.total td:nth-child(2){
+        border-top:2px solid #eee;
+        font-weight:bold;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td{
+            width:100%;
+            display:block;
+            text-align:center;
+        }
+        
+        .invoice-box table tr.information table td{
+            width:100%;
+            display:block;
+            text-align:center;
+        }
+    }
+    </style>
+</head>
+
+<body>
+{% for i in n %}
+{% ifequal forloop.counter 1%}
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="/static/bbtp.jpg" style="width:100%; max-width:300px;">
+                            </td>
+                            
+                            <td>
+								
+                                Invoice :{{i.orderno}} <br>
+								Date: {% now "jS F Y" %}<br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+						
+						
+                            <td>{{j.address}} {{j.satate}} {{j.pincode}}
+                                                                
+                            </td>
+                        
+                            <td>
+								
+                                {{request.user.first_name}} {{request.user.last_name}}<br>
+											<br>
+                                {{request.user.email}}<br>
+								{{j.mob}}
+                            </td>
+							
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+			{% endifequal %}
+            {% endfor %}
+            <tr class="heading">
+                <td>
+                    Payment Method
+                </td>
+                
+                <td>
+                    
+                </td>
+            </tr>
+            
+            <tr class="details">
+                <td>
+					{% if z.payment == 'Cash On Delivery'%}
+					Cash On Delivery
+					{% else %}
+                    Online Transaction
+					{% endif %}
+                </td>
+                
+                <td>
+                    
+                </td>
+            </tr>
+            
+            <tr class="heading">
+                <td>
+                    Item
+                </td>
+                
+                <td>
+                    Price
+                </td>
+            </tr>
+            {% for i in n%}
+			
+            <tr class="item">
+                <td>
+                    {{i.fkbook.title}}
+                </td>
+				
+                
+                <td>
+                    {{i.price}}
+                </td>
+            </tr>
+            {% endfor %}
+            
+            
+            <tr class="total">
+                <td></td>
+                
+                <td>
+                   Total:<span id="demo"></span>
+                </td>
+            </tr>
+			<script>
+					text=0;
+					{% for i in n %}
+					text =text+{{i.price}};
+					{% endfor %}
+document.getElementById("demo").innerHTML = text;
+</script>
+        </table>
+		
+		<br>
+		<br>
+		<br>
+		<li>Terms & Conditions:</li></ul>
+		<ol type='I'>
+<li>We take 75% as initial payable which is refundable as we receive the book and charge 25% for first 15 days for rental and if you want book for more time period charges will applied as follows:</li>
+<ol>
+<li>	First 15 days – 25%</li>
+<li>	Next 15 days – 10% (25%+10%)</li>
+<li>	Next 15 days – 10% (25%+10%+10%)</li>
+</ol>
+<li>You cannot rent book for more than 45 days. If you do so, then the initial payable will not be refunded.</li>
+<li>To receive a refund, you must return your item and in the same condition you received it in.</li>
+<li>You cannot return an Ebook.</li>
+</ol>
+    </div>
+	
+
+</body>
+</html>

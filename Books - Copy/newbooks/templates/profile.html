@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+	{% block title %}
+		Profile
+	{% endblock %}
+	{% block content %}
+		<div class="container">
+			<div class="panel panel-primary">
+			<div class="panel-heading">Profile</div>
+				<div class="panel-body">
+					<form action='' method='post' enctype="multipart/form-data">
+						{% csrf_token %}
+						
+						{{forms.as_p}}
+						
+						<div class="form-group">
+							
+							<label for="sponsorid">Sponsor Id:</label>
+							{% if jks.sponsorid == 0 %}
+							<input type="text" class="form-control" id="usr" name="sponsorid" value='{{jks.sponsorid}}' > <br>
+							{% else %}
+							<input type="text" class="form-control" id="usr" name="sponsorid" value='{{jks.sponsorid}}' readonly> <br>
+							{% endif %}
+						</div>
+						<button type='submit'class="btn btn-primary btn-md">Save</button>
+						<a href="/password" class="btn btn-primary btn-md">Change Password</a>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+	
+	{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+	{% block title %}
+			T & C
+	{% endblock %}
+	{% block content %}
+		<div class="container">
+		<div class="panel panel-info">
+					<div class="panel-heading">Terms and Conditions</div>
+						<div class="panel-body">
+						<div  class="container">
+							Date : {% now "jS F Y" %}
+							<font face="Cambira" color="blue"><h3>We take 75%* as initial payable which is refundable as we receive the book and <br>charge 25% for first 15 days for rental and if you want book for more time period <br>charges will applied as follows:<br>
+							<ol type='a'>
+<li>First 15 days – 25%</li>
+<li>Next 15 days – 10%</li>
+<li>Next 15 days – 10%</li></h3></div>
+<div  class="container">
+
+<h3> You cannot rent book for more than 45 days. If you do so, then the initial payable will not be refunded.<br>* To receive a refund, you must return your item and in the same condition you received it in.</h3><br>All books sent to a subscriber are verified to be in a good condition prior to dispatch and condition of each book is recorded in our system. Upon receipt of the books,<br> you must ensure that the books are in good condition. Any damage, if found, must be reported to our representative and conveyed to BOOKSTORE customer service via<br> email. Upon receipt of the books, we will verify the condition of the book against the condition recorded in our system before dispatch. If a book is returned to BOOKSTORE <br>damaged as a result of subscriber misuse, BOOKSTORE will charge you the market value of each damaged book or the Initial Payable solely decided by BOOKSTORE. If <br>BOOKSTORE determines that a book was damaged during transit, BOOKSTORE will not charge subscriber for the damaged book</font>
+</div>
+<br>
+<a href="/jks" class="btn btn-success" role="button">Accept & Online Payment</a>
+{% if pin.pincode == 110053 %}
+<a href="/cod/{{d}}" class="btn btn-success" role="button">Accept & Cash On Delivery</a>
+{% endif %}
+						</div>
+					</div>
+					</div>
+	{% endblock %}

@@ -1,0 +1,35 @@
+
+
+            <div class="modal-header">
+                <a href="/store" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+				
+                <h3 class="modal-title">{{qv.title}}</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 product_img">
+                        <img src="{{qv.pic.url}}" class="img-responsive">
+                    </div>
+                    <div class="col-md-6 product_content">
+                        <h4>Product Id: <span>{{qv.isbn}}</span></h4>
+                        
+                        <p>{{qv.desc|linebreaks}}</p>
+                        <h3 class="cost"> ₹{{qv.price}} </h3>
+                        <div class="row">
+                            
+                            <!-- end col -->
+                            
+                            <!-- end col -->
+                            <div class="col-md-4 col-sm-12">
+                                
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <div class="space-ten"></div>
+                        <div class="btn-ground">
+                            <a href="/cart/{{qv.isbn}}/" role="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button></a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>

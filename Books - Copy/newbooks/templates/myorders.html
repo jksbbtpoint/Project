@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+	{% block title %}
+			Your Orders
+	{% endblock %}
+	{% block style %}
+		body { padding-bottom: 0px; }
+		#searchid {
+			position: relative;
+			width: 28%;
+		}
+	{% endblock %}
+	{% block content %}
+	
+		<div class="container">
+		{% if messages %}
+		<div class="messages">
+		{% for message in messages %}
+		{% if message.tags %} 
+		<div class="{{ message.tags }}">{% endif %}<div class="alert alert-warning">{{ message }}</div></div>
+		{% endfor %}
+	</div>
+	{% endif %}
+	</div>
+		<div class="container">
+			<h2>Your Orders</h2>
+			<div class="container" id="searchid">
+	
+		<form action="/searchorder/" method="post">
+	{% csrf_token %}
+	<div class="input-group ">
+	
+	<input type="text" placeholder="Search by Order No." class="form-control" name="search_box" id="search_box" />
+	<span class="input-group-btn">
+	<button type="submit" class="btn btn-info go inline"><span class="glyphicon glyphicon-search"></span>Search</button></span>
+	</div></div>
+			<hr>
+			{% for i in order %}
+			<div class="panel panel-default">
+				<div class="panel-heading">Order No.{{i.orderno}}<span class="pull-right">Date:{{i.Purchasedate}}</span></div>
+				<div class="panel-body">
+					<div class="media">
+						<a class="pull-left" href="/det/{{i.fkbook.id}}"> <img src="{{i.fkbook.pic.url}}" style="width: 120px; height: 150px;"> </a>
+						<div class="media-body">
+							<h4 class="media-heading"><a href="/det/{{i.fkbook.id}}">{{i.fkbook.title}}</a></h4>
+							<h5 class="media-heading"> by <a href="#">{{i.fkbook.author}}</a></h5>
+							
+							<span>Quantity: </span><span class="text-success"><strong>{{i.qty}}</strong></span><br>
+							<span>Price: </span><span class="text-success"><strong>{{i.price}}</strong></span>
+							
+							
+						</div><br>
+						<a href="/{{i.orderno}}" class="btn btn-info btn-md"><span class="pull-right"> 	Print Invoice</span></a>
+						
+						{% ifnotequal i.fkbook.Category 'Ebook' %}
+						{% if i.Returndate == None %}
+						<a href="/ret/{{i.orderno}}/{{i.fkbook.isbn}}"><span class="pull-right">Return</span></a>
+						{% endif %}
+						{% else %}
+						{% endifnotequal %}
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	{% endblock %}

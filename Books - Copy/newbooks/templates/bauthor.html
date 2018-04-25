@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+	{% block title %}
+			About Us
+	{% endblock %}
+	{% block content %}
+		
+		<div class="container">
+			<h2>Author Details</h2>
+				<div class="panel panel-default">
+					<div class="panel-heading">{{author.name}}</div>
+						<div class="panel-body">
+						<img src="{{author.pic.url}}" height="200px" width="200px"/><br>
+						<h2>{{author.name}}</h2><br>
+						{% if messages %}
+		<div class="messages">
+		{% for message in messages %}
+		{% if message.tags %} 
+		<div class="{{ message.tags }}">{% endif %}<div class="alert alert-warning">{{ message }}</div></div>
+		{% endfor %}
+	</div>
+{% endif %}
+						<h3><font face="Times New Roman" color="blue">{{author.about|linebreaks}}</font></h3>
+						</div>
+				</div>
+		</div>
+	{% endblock %}

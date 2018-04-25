@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+	{% block title %}
+			Reviews
+	{% endblock %}
+	
+{% block style %}
+/*-- Content Style --*/
+body { padding-bottom: 0px; 
+		background-repeat: no-repeat;
+		background-size:100%;
+		background-image: url("/static/book.jpg")
+		}
+.post-footer-option li{
+    float:left;
+    margin-right:50px;
+    padding-bottom:15px;
+}
+
+.post-footer-option li a{
+    color:#AFB4BD;
+    font-weight:500;
+    font-size:1.3rem;
+}
+
+.photo-profile{
+    border:1px solid #DDD;    
+}
+
+.anchor-username h4{
+    font-weight:bold;    
+}
+
+.anchor-time{
+    color:#ADB2BB;
+    font-size:1.2rem;
+}
+
+.post-footer-comment-wrapper{
+    background-color:#F6F7F8;
+}
+	{% endblock %}
+	{% block content %}
+
+	
+		<div class="container">	
+			{% if messages %}
+				<div class="messages">
+					{% for message in messages %}
+						{% if message.tags %} 
+							<div class="{{ message.tags }}">
+						{% endif %}
+						<div class="alert alert-warning">{{ message }}</div></div>
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
+		<div class="container" style="margin-top: 50px;">
+		<div class="row">
+			<div class="col-lg-8 col-sm-8 col-md-8">
+				
+				<form action="" method="post">
+					{% for i in all %}
+						<div class="container">
+							<div class="col-md-5">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<section class="post-heading">
+											<div class="row">
+												<div class="col-md-11">
+													<div class="media">
+														<div class="media-left">
+															<a href="#">
+																{% for p in k %}
+																	{% ifequal i.author p.username %}
+																	
+																	  <img class="media-object photo-profile" src="{{p.profile.pic.url}}" width="40" height="40" alt="...">
+																	
+																	{% endifequal %}
+																{% endfor %}
+															</a>
+														</div>
+														
+														<div class="media-body">
+														{% for p in k %}
+																	{% ifequal i.author p.username %}
+															<a href="/authdet/{{i.author}}" class="anchor-username" data-toggle="modal" data-target="#product_view"><h4 class="media-heading"> {{p.first_name}}</h4></a>
+														{% endifequal %}
+																{% endfor %}	
+															<a href="#" class="anchor-time"><small>&nbsp;&nbsp;{{i.date_created|timesince}}&nbsp;ago</small></a>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-1">
+													<span class="pull-right">
+														{% ifequal i.author request.user.username %}
+															<a href="/delete/{{i.id}}/"><i class="material-icons" style="font-size:25px;color:black;">delete</i></a>
+														{% endifequal %}
+														{% ifequal i.author request.user.first_name %}
+															<a href="/delete/{{i.id}}/"><i class="material-icons" style="font-size:25px;color:black;">delete</i></a>
+														{% endifequal %}
+													</span>
+												</div>
+											</div>             
+										</section>
+										<section class="post-body">
+											<p>{{i.post|linebreaks}}</p>
+										</section>
+										<section class="post-footer">
+											<hr>
+											<div class="post-footer-option container">
+												<ul class="list-unstyled">
+													<li><a href="/like/{{i.title}}"><i class="glyphicon glyphicon-thumbs-up"></i> Like</a></li>	
+													<li><a href="/comm/{{i.title}}/"><i class="glyphicon glyphicon-comment"></i> Comment</a></li>
+												</ul>	
+											</div>
+											   {% for like in s %}
+													{% ifequal i.title like.bg.title %}
+													{% for p in k %}
+																			{% ifequal like.name p.username %}
+													{{p.first_name}}
+													{% endifequal %}
+											   {% endfor %}
+											   {% endifequal %}
+											   {% endfor %}
+											   
+											
+											  
+													<a href="/likes/{{i.title}}/"> & more </a>
+												
+											<div class="scrollable">
+												{% for jks in jks %}
+													{% ifequal i.title jks.bg.title %}
+														<br>
+													<div class="post-footer-comment-wrapper">
+														<div class="comment-form">
+														</div>
+														<div class="comment">
+															<div class="media">
+																<div class="media-left">
+																	<a href="#">
+																		{% for p in k %}
+																			{% ifequal jks.name p.username %}
+																	
+																				<img class="media-object photo-profile" src="{{p.profile.pic.url}}" width="32" height="32" alt="...">
+																	</a>
+																			{% endifequal %}
+																		{% endfor %}
+																</div>
+																<div class="media-body">
+																{% for p in k %}
+																			{% ifequal jks.name p.username %}
+																	<a href="/authdet/{{jks.name}}" class="anchor-username" data-toggle="modal" data-target="#product_view"><h4 class="media-heading"> {{p.first_name}}</h4></a>
+																	{% endifequal %}
+																		{% endfor %}
+																	<p>{{jks.comments}}</p>
+																	<a href="#" class="anchor-time">{{jks.datecreate}}</a>
+																	<span class="pull-right">
+																		{% if jks.name == request.user.username or i.author == request.user.username %}
+																		<a href="/delcomm/{{jks.id}}/"><i class="material-icons" style="font-size:48px;color:black;">delete</i></a>
+																		{% endif %}
+																		{% if jks.name == request.user.first_name or i.author == request.user.first_name %}
+																		<a href="/delcomm/{{jks.id}}/"><i class="material-icons" style="font-size:25px;color:black;">delete</i></a>
+																		{% endif %}
+																	</span><br><br>
+																</div>
+													  
+															</div>
+														</div> 
+													</div>
+										   
+													{% endifequal %}
+												{% endfor %} 
+											</div>
+										</section>
+									</div>
+								</div>   
+							</div>
+						</div>
+					{% endfor %}
+				</form>
+			</div>
+
+			<div class="col-lg-4 col-sm-4 col-md-4">
+				<div class="row" style="padding-left: 20px; padding-right: 20px;">
+					
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<span class="glyphicon glyphicon-lock"></span> Login
+								</div>
+								<div class="panel-body">
+									<form class="form-horizontal" action="{% url 'check' %}" method="post">
+										{% csrf_token %}
+										<label for="username">Username:</label>
+										<input type="text" class='form-control' placeholder="Enter username" name="username"><br>
+										<label for="password">Password:</label>
+										<input type="password" class='form-control' placeholder="Enter password" name="password">
+										<br>
+										<div class="form-group last">
+											<div class="col-sm-offset-3 col-sm-9">
+												<button type="submit" class="btn btn-success btn-sm">Sign in</button>
+												<button type="reset" class="btn btn-default btn-sm">Reset</button>
+												<br><br><a href="/forgot">Forgot Password</a>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="panel-footer">
+									Not Registred? <a href="/register">
+									Register here</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="modal fade product_view" id="product_view">
+    <div class="modal-dialog">
+        <div class="modal-content">
+		
+           {% include 'modal2.html' %}
+		          
+        </div>
+    </div>
+</div>
+
+		{% endblock %}

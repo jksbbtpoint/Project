@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>All Posts</title>
+		<link rel="icon" href="/static/kks.png" type="image/png">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<div class="modal-header">
+			<a href="/allpost/" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+			<h3 class="modal-title"><span class="glyphicon glyphicon-thumbs-up"></span>Likes({% if p %}{% for jks in p %}
+				{% if forloop.last %}
+				{{forloop.counter}}
+				{% endif %}
+				{% endfor %}
+				{% else %}
+				0
+				{% endif %})
+				
+			</h3>
+		</div>
+		{% for jks in p %}
+		<hr>
+		
+		<div class="post-footer-comment">
+			<div class="comment-form">
+			</div>
+			<div class="comment">
+				<div class="media">
+					<div class="media-left">
+					
+						{% for i in k %}
+							{% ifequal jks.name i.username %}
+								<img class="img-circle" src="{{i.profile.pic.url}}" width="32" height="32" alt="...">
+					{% endifequal %}
+						{% endfor %}
+							
+					</div>
+					<div class="media-body">
+						{% for i in k %}
+							{% ifequal jks.name i.username %}
+						<a href="/authdet/{{jks.name}}" class="anchor-username"><h4 class="media-heading">{{i.first_name}} {{i.last_name}}</h4></a>
+					</div>
+						{% endifequal %}
+						{% endfor %}
+													  
+				</div>
+			</div> 
+		</div>
+		{% endfor %}
+		<hr>
